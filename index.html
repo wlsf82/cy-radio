@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cy-radio</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Select the priority:</p>
+    <div>
+      <input type="radio" id="high" name="priority" value="high">
+      <label for="high">High</label>
+    </div>
+    <div id="medium-div"></div>
+    <div id="low-div"></div>
+    <script>
+      window.addEventListener('load', function() {
+        const divs = ['medium', 'low']
+
+        divs.forEach(div => {
+          setTimeout(function() {
+            const mediumDiv = document.querySelector(`#${div}-div`)
+            const mediumLabel = document.createElement('label')
+            const mediumRadio = document.createElement('input')
+
+            mediumLabel.setAttribute('for', div)
+            mediumLabel.innerText = div.charAt(0).toUpperCase() + div.slice(1)
+
+            mediumRadio.setAttribute('type', 'radio')
+            mediumRadio.setAttribute('id', div)
+            mediumRadio.setAttribute('name', 'priority')
+            mediumRadio.setAttribute('value', div)
+
+            mediumDiv.appendChild(mediumRadio)
+            mediumDiv.appendChild(mediumLabel)
+          }, 2000)
+        })
+      }, false)
+    </script>
+  </body>
+</html>
